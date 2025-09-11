@@ -3,6 +3,7 @@ import api from "./api";
 export interface AuthResponse {
   token: string;
   email: string;
+  fullName: string;
 }
 
 export async function login(email: string, password: string): Promise<AuthResponse> {
@@ -22,4 +23,12 @@ export interface RegisterPayload {
 
 export async function register(data: RegisterPayload): Promise<void> {
   await api.post("/auth/register", data);
+}
+
+export async function requestPasswordReset(email: string): Promise<void> {
+  await api.post("/auth/forgot-password", { email });
+}
+
+export async function resetPassword(token: string, password: string): Promise<void> {
+  await api.post("/auth/reset-password", { token, password });
 }

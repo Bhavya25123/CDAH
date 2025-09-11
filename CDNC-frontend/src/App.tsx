@@ -14,6 +14,8 @@ import FindMP from "./pages/FindMP";
 import AdvocacyHub from "./pages/AdvocacyHub";
 import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/send-letter" element={<SendLetter />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/find-mp" element={<FindMP />} />
           <Route path="/advocacy" element={<AdvocacyHub />} />
           <Route path="/resources" element={<Resources />} />

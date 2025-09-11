@@ -24,3 +24,11 @@ export interface RegisterPayload {
 export async function register(data: RegisterPayload): Promise<void> {
   await api.post("/auth/register", data);
 }
+
+export async function requestPasswordReset(email: string): Promise<void> {
+  await api.post("/auth/forgot-password", { email });
+}
+
+export async function resetPassword(token: string, password: string): Promise<void> {
+  await api.post("/auth/reset-password", { token, password });
+}

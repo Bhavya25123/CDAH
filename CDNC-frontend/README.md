@@ -23,10 +23,12 @@ To run this project on your localhost, follow these steps:
 
 3. **Start the development server:**
    ```bash
-   npm start
+   npm run dev
    ```
 
 4. Open your browser and navigate to `http://localhost:3000` to see the application running locally.
+
+> **Note:** The frontend expects the backend URL in the `VITE_API_URL` environment variable. By default it falls back to `http://localhost:5001/api`, but you can override this in a `.env` file when pointing at a deployed backend.
 
 ## Deployed Link
 

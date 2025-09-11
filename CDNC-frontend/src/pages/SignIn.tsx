@@ -71,8 +71,13 @@ const SignIn = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    required
-                  />
+                  required
+                />
+              </div>
+              <div className="text-right">
+                <Link to="/forgot-password" className="text-sm text-purple-600 font-medium hover:underline">
+                  Forgot password?
+                </Link>
               </div>
 
               <Button

@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   zipCode: { type: String },
   description: { type: String },
   passwordHash: { type: String, required: true },
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date },
   createdAt: { type: Date, default: Date.now },
 });
 

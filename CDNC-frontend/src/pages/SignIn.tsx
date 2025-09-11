@@ -3,24 +3,27 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { login } from "@/lib/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const res = await login(email, password);
       localStorage.setItem("token", res.token);
+      localStorage.setItem("fullName", res.fullName);
       toast({
         title: "Login successful",
         description: `Welcome back to CDNC!`,
       });
       setEmail("");
       setPassword("");
+      navigate("/");
       } catch (err) {
         const message =
           axios.isAxiosError(err) && err.response?.data?.error
@@ -68,8 +71,13 @@ const SignIn = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    required
-                  />
+                  required
+                />
+              </div>
+              <div className="text-right">
+                <Link to="/forgot-password" className="text-sm text-purple-600 font-medium hover:underline">
+                  Forgot password?
+                </Link>
               </div>
 
               <Button
